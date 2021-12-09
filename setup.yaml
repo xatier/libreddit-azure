@@ -1,0 +1,77 @@
+apiVersion: '2021-07-01'
+location: <azure region>
+name: libreddit
+properties:
+  containers:
+    - name: libreddit
+      properties:
+        environmentVariables:
+          - name: LIBREDDIT_DEFAULT_THEME
+            value: 'dark'
+          - name: LIBREDDIT_DEFAULT_FRONT_PAGE
+            value: 'default'
+          - name: LIBREDDIT_DEFAULT_LAYOUT
+            value: 'card'
+          - name: LIBREDDIT_DEFAULT_WIDE
+            value: 'on'
+          - name: LIBREDDIT_DEFAULT_COMMENT_SORT
+            value: 'hot'
+          - name: LIBREDDIT_DEFAULT_POST_SORT
+            value: 'new'
+          - name: LIBREDDIT_DEFAULT_SHOW_NSFW
+            value: 'on'
+          - name: LIBREDDIT_DEFAULT_USE_HLS
+            value: 'off'
+          - name: LIBREDDIT_DEFAULT_HLS_NOTIFICATION
+            value: 'off'
+        image: spikecodes/libreddit:latest
+        ports:
+          - port: 8080
+            protocol: TCP
+        resources:
+          requests:
+            cpu: 0.5
+            memoryInGB: 0.5
+    - name: caddy
+      properties:
+        image: caddy:latest
+        command:
+          [
+            'caddy',
+            'run',
+            '--config',
+            '/srv/Caddyfile',
+          ]
+        ports:
+          - port: 80
+            protocol: TCP
+          - port: 443
+            protocol: TCP
+        resources:
+          requests:
+            cpu: 0.5
+            memoryInGB: 0.5
+        volumeMounts:
+          - mountPath: /srv
+            name: srv
+  initContainers: []
+  ipAddress:
+    dnsNameLabel: <dns label>
+    fqdn: <dns label>.<azure region>.azurecontainer.io
+    ports:
+      - port: 80
+        protocol: TCP
+      - port: 443
+        protocol: TCP
+    type: Public
+  volumes:
+    - name: srv
+      azureFile:
+        sharename: libreddit
+        storageAccountName: <storage account name>
+        storageAccountKey: <storage account key>
+  osType: Linux
+  restartPolicy: Always
+  sku: Standard
+tags: {}
+type: Microsoft.ContainerInstance/containerGroups

@@ -1,0 +1,10 @@
+{
+	admin off
+}
+
+<dnsNameLabel>.<azure region>.azurecontainer.io {
+	reverse_proxy localhost:8080
+	basicauth {
+		<user> <caddy hash-password>
+	}
+}
