@@ -70,6 +70,8 @@ properties:
         sharename: libreddit
         storageAccountName: <storage account name>
         storageAccountKey: <storage account key>
+      # secret:
+      #   Caddyfile: <cat Caddyfile | base64 | xclip -selection clipboard>
   osType: Linux
   restartPolicy: Always
   sku: Standard

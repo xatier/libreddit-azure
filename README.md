@@ -25,3 +25,8 @@ az login --use-device-code --tenant <yourdiretory.onmicrosoft.com>
 # deploy container instance
 ./run.sh
 ```
+
+### Use base64-encoded secrets for Caddyfile
+
+We can also use [base64-encode the Caddy configuration file](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-container-group-ssl#base64-encode-secrets-and-configuration-file) in the mounted volumes. Simply
+Remove the comments in `setup.yaml` and replace with the base64 string.
