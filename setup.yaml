@@ -22,7 +22,7 @@ properties:
             value: 'on'
           - name: LIBREDDIT_DEFAULT_USE_HLS
             value: 'off'
-          - name: LIBREDDIT_DEFAULT_HLS_NOTIFICATION
+          - name: LIBREDDIT_DEFAULT_HIDE_HLS_NOTIFICATION
             value: 'off'
         image: spikecodes/libreddit:latest
         ports:
