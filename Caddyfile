@@ -7,4 +7,7 @@
 	basicauth {
 		<user> <caddy hash-password>
 	}
+	log {
+		output stdout
+    }
 }
