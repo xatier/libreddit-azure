@@ -21,7 +21,7 @@ properties:
           - name: LIBREDDIT_DEFAULT_SHOW_NSFW
             value: 'on'
           - name: LIBREDDIT_DEFAULT_USE_HLS
-            value: 'off'
+            value: 'on'
           - name: LIBREDDIT_DEFAULT_HIDE_HLS_NOTIFICATION
             value: 'off'
         image: spikecodes/libreddit:latest
