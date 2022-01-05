@@ -4,10 +4,13 @@
 
 <dnsNameLabel>.<azure region>.azurecontainer.io {
 	reverse_proxy localhost:8080
-	basicauth {
-		<user> <caddy hash-password>
-	}
 	log {
 		output stdout
-    }
+	}
+	tls {
+		client_auth {
+			mode require_and_verify
+			trusted_ca_cert_file /srv/ca.cert
+		}
+	}
 }

@@ -33,5 +33,12 @@ az storage file upload \
     --share-name "$AZURE_CONTAINER_NAME" \
     --source Caddyfile
 
+# upload ca.cert
+az storage file upload \
+    --account-key "$STORAGE_KEY" \
+    --account-name "$AZURE_STORAGE_ACCOUNT_NAME" \
+    --share-name "$AZURE_CONTAINER_NAME" \
+    --source certs/ca.cert
+
 echo "$AZURE_STORAGE_ACCOUNT_NAME"
 echo "$STORAGE_KEY"
