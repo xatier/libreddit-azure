@@ -39,3 +39,5 @@ User certs are stored in `~/.pki/nssdb`.
 ```bash
 certutil -d sql:$HOME/.pki/nssdb -L
 ```
+
+- [Arch wiki on Network Security Services](https://wiki.archlinux.org/title/Network_Security_Services)
