@@ -1,0 +1,14 @@
+{
+    "CN": "gginin.today",
+    "key": {
+        "algo": "rsa",
+        "size": 4096
+    },
+    "names": [
+        {
+            "C":  "TW",
+            "L":  "FOO",
+            "ST": "Taiwan"
+        }
+    ]
+}
