@@ -30,8 +30,8 @@ properties:
             protocol: TCP
         resources:
           requests:
-            cpu: 1
-            memoryInGB: 0.5
+            cpu: 3
+            memoryInGB: 1
     - name: caddy
       properties:
         image: caddy:latest
@@ -49,8 +49,8 @@ properties:
             protocol: TCP
         resources:
           requests:
-            cpu: 0.5
-            memoryInGB: 0.5
+            cpu: 1
+            memoryInGB: 1
         volumeMounts:
           - mountPath: /srv
             name: srv
