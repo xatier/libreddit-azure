@@ -45,3 +45,10 @@ openssl x509 -in cfssl-certs/client.pem -text -noout
 cfssl certinfo -cert cfssl-certs/ca.pem
 cfssl certinfo -cert cfssl-certs/client.pem
 ```
+
+## to add a new client certs with existing `ca.pem`
+
+- create a new client json file `cp client.json new.json`.
+- comment out `new self-signed CA` section in `certs.sh`.
+- note: certificate files for iOS devices must have passwords, update `-password "pass:"`.
+- run `certs.sh`.
