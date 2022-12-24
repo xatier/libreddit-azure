@@ -1,6 +1,6 @@
 # libreddit (Private front-end for Reddit) on Azure Cloud
 
-Repo to quickly host [libreddit](https://github.com/spikecodes/libreddit)
+Repo to quickly host [libreddit](https://github.com/libreddit/libreddit)
 on [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-overview) with
 [Azure Storage Files](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction)
 

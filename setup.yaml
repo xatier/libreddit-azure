@@ -24,7 +24,7 @@ properties:
             value: 'on'
           - name: LIBREDDIT_DEFAULT_HIDE_HLS_NOTIFICATION
             value: 'off'
-        image: spikecodes/libreddit:latest
+        image: libreddit/libreddit:latest
         ports:
           - port: 8080
             protocol: TCP
