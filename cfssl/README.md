@@ -50,5 +50,6 @@ cfssl certinfo -cert cfssl-certs/client.pem
 
 - create a new client json file `cp client.json new.json`.
 - comment out `new self-signed CA` section in `certs.sh`.
-- note: certificate files for iOS devices must have passwords, update `-password "pass:"`.
+- note: certificate files for iOS devices must have passwords, update `-password "pass:"` to `-password "pass:<password>"`.
+- note: iOS doesn't support OpenSSL 3, need to use `openssl-1.1` instead
 - run `certs.sh`.

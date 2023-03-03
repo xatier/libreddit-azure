@@ -22,7 +22,8 @@ cfssl gencert -ca="$CA.pem" -ca-key="$CA-key.pem" \
     cfssljson -bare "$CLIENT"
 
 # export to p12 file (empty password)
-openssl pkcs12 -export \
+# iOS doesn't support OpenSSL 3
+openssl-1.1 pkcs12 -export \
     -inkey "$CLIENT-key.pem" \
     -in "$CLIENT.pem" \
     -password "pass:" \
