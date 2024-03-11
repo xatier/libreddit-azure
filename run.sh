@@ -3,8 +3,10 @@
 set -x
 
 AZURE_GROUP_NAME=""
-AZURE_CONTAINER_NAME="libreddit"
+AZURE_CONTAINER_NAME="redlib"
 
+az container delete --resource-group "$AZURE_GROUP_NAME" \
+    --name "$AZURE_CONTAINER_NAME" --yes
 az container create --resource-group "$AZURE_GROUP_NAME" --file setup.yaml
 
 sleep 5.0

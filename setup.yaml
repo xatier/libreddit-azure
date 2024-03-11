@@ -1,33 +1,50 @@
-apiVersion: '2021-07-01'
+name: redlib
+apiVersion: '2023-05-01'
 location: <azure region>
-name: libreddit
+tags: {}
 properties:
   containers:
-    - name: libreddit
+    - name: redlib
       properties:
-        environmentVariables:
-          - name: LIBREDDIT_DEFAULT_THEME
-            value: 'dark'
-          - name: LIBREDDIT_DEFAULT_FRONT_PAGE
-            value: 'default'
-          - name: LIBREDDIT_DEFAULT_LAYOUT
-            value: 'card'
-          - name: LIBREDDIT_DEFAULT_WIDE
-            value: 'on'
-          - name: LIBREDDIT_DEFAULT_COMMENT_SORT
-            value: 'hot'
-          - name: LIBREDDIT_DEFAULT_POST_SORT
-            value: 'new'
-          - name: LIBREDDIT_DEFAULT_SHOW_NSFW
-            value: 'on'
-          - name: LIBREDDIT_DEFAULT_USE_HLS
-            value: 'on'
-          - name: LIBREDDIT_DEFAULT_HIDE_HLS_NOTIFICATION
-            value: 'off'
-        image: libreddit/libreddit:latest
+        image: quay.io/redlib/redlib:latest
         ports:
           - port: 8080
             protocol: TCP
+        environmentVariables:
+          - name: REDLIB_ROBOTS_DISABLE_INDEXING
+            value: 'on'
+          - name: REDLIB_DEFAULT_THEME
+            value: 'dark'
+          - name: REDLIB_DEFAULT_FRONT_PAGE
+            value: 'default'
+          - name: REDLIB_DEFAULT_LAYOUT
+            value: 'card'
+          - name: REDLIB_DEFAULT_WIDE
+            value: 'on'
+          - name: REDLIB_DEFAULT_POST_SORT
+            value: 'new'
+          - name: REDLIB_DEFAULT_COMMENT_SORT
+            value: 'top'
+          - name: REDLIB_DEFAULT_SHOW_NSFW
+            value: 'on'
+          - name: REDLIB_DEFAULT_BLUR_NSFW
+            value: 'off'
+          - name: REDLIB_DEFAULT_USE_HLS
+            value: 'on'
+          - name: REDLIB_DEFAULT_HIDE_HLS_NOTIFICATION
+            value: 'on'
+          - name: REDLIB_DEFAULT_AUTOPLAY_VIDEOS
+            value: 'off'
+          - name: REDLIB_DEFAULT_SUBSCRIPTIONS
+            value: ''
+          - name: REDLIB_DEFAULT_HIDE_AWARDS
+            value: 'off'
+          - name: REDLIB_DEFAULT_DISABLE_VISIT_REDDIT_CONFIRMATION
+            value: 'off'
+          - name: REDLIB_DEFAULT_HIDE_SCORE
+            value: 'off'
+          - name: REDLIB_DEFAULT_FIXED_NAVBAR
+            value: 'on'
         resources:
           requests:
             cpu: 3
@@ -54,7 +71,8 @@ properties:
         volumeMounts:
           - mountPath: /srv
             name: srv
-  initContainers: []
+  imageRegistryCredentials: []
+  restartPolicy: Always
   ipAddress:
     dnsNameLabel: <dns label>
     fqdn: <dns label>.<azure region>.azurecontainer.io
@@ -64,17 +82,15 @@ properties:
       - port: 443
         protocol: TCP
     type: Public
+  osType: Linux
   volumes:
     - name: srv
       azureFile:
-        sharename: libreddit
+        sharename: redlib
         storageAccountName: <storage account name>
         storageAccountKey: <storage account key>
       # secret:
       #   Caddyfile: <cat Caddyfile | base64 | xclip -selection clipboard>
       #   ca.cert: <cat certs/ca.cert | base64 | xclip -selection clipboard>
-  osType: Linux
-  restartPolicy: Always
   sku: Standard
-tags: {}
-type: Microsoft.ContainerInstance/containerGroups
+  initContainers: []
